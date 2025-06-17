@@ -1,19 +1,19 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.RituelService;
+import fr.meya.questconnect.toolkit.service.EnvoutementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/rituels")
-public class RituelController {
+@RequestMapping("/api/envoutements")
+public class EnvoutementController {
     @Autowired
-    private RituelService rituelService;
+    private EnvoutementService envoutementService;
 
     @GetMapping
-    public String getRituelList(){
-        return rituelService.getRituelList();
+    public String getEnvoutementList(){
+        return envoutementService.getEnvoutementList();
     }
 }
