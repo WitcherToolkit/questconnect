@@ -1,0 +1,15 @@
+package fr.meya.questconnect.toolkit.service;
+
+import fr.meya.questconnect.toolkit.port.out.ICaracteristiqueAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CaracteristiqueService {
+    @Autowired
+    private ICaracteristiqueAdapter caracteristiqueAdapter;
+
+    public String getCaracteristiqueList() {
+        return caracteristiqueAdapter.getCaracteristiqueList();
+    }
+}
