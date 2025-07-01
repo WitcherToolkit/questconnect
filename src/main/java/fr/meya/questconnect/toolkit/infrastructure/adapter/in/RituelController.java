@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.RituelService;
+import fr.meya.questconnect.toolkit.port.out.IRituelAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/rituels")
 public class RituelController {
     @Autowired
-    private RituelService rituelService;
+    private IRituelAdapter rituelService;
 
     @GetMapping
     public String getRituelList(){
