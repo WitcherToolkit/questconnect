@@ -13,7 +13,7 @@ public class ProfessionAdapter implements IProfessionAdapter {
     @Override
     public String getProfessionList() {
         RestTemplate restTemplate = new RestTemplate();
-        String url = baseUrl + "/professions/list";
+        String url = baseUrl + "/profession/list";
         return restTemplate.getForObject(url, String.class);
     }
 
