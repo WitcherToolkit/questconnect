@@ -12,7 +12,7 @@
 	<artifactId>questconnect</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Questconnect</name>
-	<description>API REST passe-plat entre les le front et les autres API</description>
+	<description>API REST passe-plat entre le front et les autres API</description>
 	<url/>
 	<licenses>
 		<license/>
