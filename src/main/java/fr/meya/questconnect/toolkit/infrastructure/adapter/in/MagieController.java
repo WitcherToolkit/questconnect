@@ -1,11 +1,10 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
 import fr.meya.questconnect.toolkit.service.MagieService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+@Slf4j
 @RestController
 @RequestMapping("/api/magies")
 public class MagieController {
@@ -16,4 +15,14 @@ public class MagieController {
     public String getMagieList(){
         return magieService.getMagieList();
     }
+
+    // Attention, ne pas oublier de rajouter @PathVariable pour récupérer celui de l'url
+    // Attention, ne pas oublier de rajouter @RequestBody
+    @PutMapping("/update/{id}")
+    public String updateMagiePut(@PathVariable long id, @RequestBody Object magieData) {
+        log.info("update magie (PUT), id: {}", id);
+        return magieService.updateMagie(id, magieData);
+    }
+
+
 }
