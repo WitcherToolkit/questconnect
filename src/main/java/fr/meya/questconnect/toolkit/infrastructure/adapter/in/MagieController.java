@@ -18,11 +18,10 @@ public class MagieController {
 
     // Attention, ne pas oublier de rajouter @PathVariable pour récupérer celui de l'url
     // Attention, ne pas oublier de rajouter @RequestBody
-    @PutMapping("/update/{id}")
-    public String updateMagiePut(@PathVariable long id, @RequestBody Object magieData) {
-        log.info("update magie (PUT), id: {}", id);
+    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String updateMagie(@PathVariable long id, @RequestBody Object magieData) {
+        log.info("Modification de la magie - ID : {} - Données : {}", id, magieData);
         return magieService.updateMagie(id, magieData);
     }
-
 
 }
