@@ -13,4 +13,9 @@ public class RituelService {
     public String getRituelList() {
         return rituelAdapter.getRituelList();
     }
+
+    public String updateRituel(long id, Object rituelData) {
+        return rituelAdapter.updateRituel(id, rituelData);
+    }
+
 }

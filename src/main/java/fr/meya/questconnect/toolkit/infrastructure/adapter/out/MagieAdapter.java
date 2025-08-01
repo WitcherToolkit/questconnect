@@ -7,6 +7,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 @Slf4j
 @Component
 public class MagieAdapter  implements IMagieAdapter {
@@ -17,9 +18,11 @@ public class MagieAdapter  implements IMagieAdapter {
     public String getMagieList() {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/list";
+
         log.info("Adapter - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
         log.info("Adapter - Réponse reçue : {}", response);
+
         return response;
     }
 
@@ -28,11 +31,12 @@ public class MagieAdapter  implements IMagieAdapter {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;
         log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, magieData);
+
         HttpEntity<Object> requestEntity = new HttpEntity<>(magieData);
         String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
         log.info("Adapter - Réponse reçue : {}", response);
+
         return response;
     }
-
 
 }
