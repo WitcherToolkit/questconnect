@@ -17,7 +17,10 @@ public class MagieAdapter  implements IMagieAdapter {
     public String getMagieList() {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/list";
-        return restTemplate.getForObject(url, String.class);
+        log.info("Adapter - Envoi de la requête GET vers {}", url);
+        String response = restTemplate.getForObject(url, String.class);
+        log.info("Adapter - Réponse reçue : {}", response);
+        return response;
     }
 
     @Override

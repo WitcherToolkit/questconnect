@@ -13,7 +13,10 @@ public class MagieController {
 
     @GetMapping
     public String getMagieList(){
-        return magieService.getMagieList();
+        log.info("Récupération de la liste des magies");
+        String response = magieService.getMagieList();
+        log.info("Liste des magies récupérée avec succès");
+        return response;
     }
 
     // Attention, ne pas oublier de rajouter @PathVariable pour récupérer celui de l'url
