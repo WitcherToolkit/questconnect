@@ -12,4 +12,9 @@ public class CaracteristiqueService {
     public String getCaracteristiqueList() {
         return caracteristiqueAdapter.getCaracteristiqueList();
     }
+
+    public String updateCaracteristique(long id, Object caracteristiqueData) {
+        return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
+    }
+
 }

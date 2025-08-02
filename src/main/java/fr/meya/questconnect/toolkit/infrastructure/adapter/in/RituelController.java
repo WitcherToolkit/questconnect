@@ -18,6 +18,7 @@ public class RituelController {
         log.info("Récupération de la liste des rituels");
         String response = rituelService.getRituelList();
         log.info("Liste des rituels récupérée avec succès");
+
         return response;
     }
 
@@ -26,4 +27,5 @@ public class RituelController {
         log.info("Modification du rituel - ID : {} - Données : {}", id, rituelData);
         return rituelService.updateRituel(id, rituelData);
     }
+
 }

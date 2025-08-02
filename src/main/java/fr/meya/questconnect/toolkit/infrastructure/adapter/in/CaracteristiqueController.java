@@ -3,9 +3,7 @@ package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 import fr.meya.questconnect.toolkit.service.CaracteristiqueService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -16,7 +14,17 @@ public class CaracteristiqueController {
 
     @GetMapping
     public String getCaracteristiqueList(){
-        log.info("consultation des caractéristiques");
-        return caracteristiqueService.getCaracteristiqueList();
+        log.info("Récupération de la liste des caractéristiques");
+        String response = caracteristiqueService.getCaracteristiqueList();
+        log.info("Liste des caractéristiques récupérée avec succès");
+
+        return response;
     }
+
+    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
+        log.info("Modification du caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
+        return caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
+    }
+
 }
