@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Component
 public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
+
     @Value("${toolkit.api.base.url}/caracteristiques")
     private String baseUrl;
 
