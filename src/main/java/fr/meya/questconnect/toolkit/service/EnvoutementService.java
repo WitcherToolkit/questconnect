@@ -13,4 +13,9 @@ public class EnvoutementService {
     public String getEnvoutementList(){
         return envoutementAdapter.getEnvoutementList();
     }
+
+    public String updateEnvoutement(long id, Object envoutementData) {
+        return envoutementAdapter.updateEnvoutement(id, envoutementData);
+    }
+
 }
