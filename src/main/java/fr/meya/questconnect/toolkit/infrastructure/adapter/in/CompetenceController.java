@@ -1,11 +1,11 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
 import fr.meya.questconnect.toolkit.service.CompetenceService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/competences")
 public class CompetenceController {
@@ -14,6 +14,17 @@ public class CompetenceController {
 
     @GetMapping
     public String getCompetenceList(){
-        return competenceService.getCompetenceList();
+        log.info("Récupération de la liste des caractéristiques");
+        String response = competenceService.getCompetenceList();
+        log.info("Liste des caractéristiques récupérée avec succès");
+
+        return response;
     }
+
+    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String updateCompetence(@PathVariable long id, @RequestBody Object competenceData) {
+        log.info("Modification du competence - ID : {} - Données : {}", id, competenceData);
+        return competenceService.updateCompetence(id, competenceData);
+    }
+
 }

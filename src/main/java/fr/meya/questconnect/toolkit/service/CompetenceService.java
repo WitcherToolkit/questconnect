@@ -6,10 +6,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CompetenceService {
+
     @Autowired
     private ICompetenceAdapter competenceAdapter;
 
     public String getCompetenceList() {
         return competenceAdapter.getCompetenceList();
+    }
+
+    public String updateCompetence(long id, Object competenceData) {
+        return competenceAdapter.updateCompetence(id, competenceData);
     }
 }
