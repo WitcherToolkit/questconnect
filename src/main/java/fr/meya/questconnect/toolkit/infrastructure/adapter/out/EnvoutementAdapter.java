@@ -11,13 +11,13 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Component
 public class EnvoutementAdapter implements IEnvoutementAdapter {
-    @Value("${toolkit.api.base.url}")
+    @Value("${toolkit.api.base.url}/envoutements")
     private String baseUrl;
 
     @Override
     public String getEnvoutementList() {
         RestTemplate restTemplate = new RestTemplate();
-        String url = baseUrl + "/envoutements/list";
+        String url = baseUrl + "/list";
 
         log.info("Adapter - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
