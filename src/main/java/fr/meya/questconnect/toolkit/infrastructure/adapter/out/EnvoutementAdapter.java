@@ -19,9 +19,9 @@ public class EnvoutementAdapter implements IEnvoutementAdapter {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/list";
 
-        log.info("Adapter - Envoi de la requête GET vers {}", url);
+        log.info("Adapter getEnvoutementList - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
-        log.info("Adapter - Réponse reçue : {}", response);
+        log.info("Adapter getEnvoutementList - Réponse reçue : {}", response);
 
         return response;
     }
@@ -30,11 +30,11 @@ public class EnvoutementAdapter implements IEnvoutementAdapter {
     public String updateEnvoutement(Long id, Object envoutementData) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;
-        log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, envoutementData);
+        log.info("Adapter updateEnvoutement - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, envoutementData);
 
         HttpEntity<Object> requestEntity = new HttpEntity<>(envoutementData);
         String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
-        log.info("Adapter - Réponse reçue : {}", response);
+        log.info("Adapter updateEnvoutement - Réponse reçue : {}", response);
 
         return response;
     }

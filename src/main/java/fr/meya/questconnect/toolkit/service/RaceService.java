@@ -7,10 +7,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RaceService {
+
     @Autowired
     private IRaceAdapter raceAdapter;
 
     public String getRaceList(){
         return raceAdapter.getRaceList();
     }
+
+    public String updateRace(long id, Object raceData) {
+        return raceAdapter.updateRace(id, raceData);
+    }
+
 }

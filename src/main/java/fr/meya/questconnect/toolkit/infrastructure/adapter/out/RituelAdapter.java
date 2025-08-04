@@ -19,9 +19,9 @@ public class RituelAdapter implements IRituelAdapter {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/list";
 
-        log.info("Adapter - Envoi de la requête GET vers {}", url);
+        log.info("Adapter getRituelList - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
-        log.info("Adapter - Réponse reçue : {}", response);
+        log.info("Adapter getRituelList - Réponse reçue : {}", response);
 
         return response;
     }
@@ -30,11 +30,11 @@ public class RituelAdapter implements IRituelAdapter {
     public String updateRituel(Long id, Object rituelData) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;
-        log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, rituelData);
+        log.info("Adapter updateRituel - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, rituelData);
 
         HttpEntity<Object> requestEntity = new HttpEntity<>(rituelData);
         String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
-        log.info("Adapter - Réponse reçue : {}", response);
+        log.info("Adapter updateRituel - Réponse reçue : {}", response);
 
         return response;
     }
