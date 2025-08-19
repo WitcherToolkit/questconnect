@@ -6,4 +6,6 @@ public interface IMagieAdapter {
 
     String updateMagie(Long id, Object magieData);
 
+    String createMagie(Object magieData);
+
 }

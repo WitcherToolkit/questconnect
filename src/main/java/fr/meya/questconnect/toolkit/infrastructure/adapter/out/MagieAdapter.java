@@ -39,4 +39,16 @@ public class MagieAdapter  implements IMagieAdapter {
         return response;
     }
 
+    @Override
+    public String createMagie(Object magieData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createMagie - Envoi de la requête POST vers {} - Données : {}", url, magieData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(magieData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createMagie - Réponse reçue : {}", response);
+
+        return response;
+    }
 }

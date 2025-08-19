@@ -28,4 +28,9 @@ public class MagieController {
         return magieService.updateMagie(id, magieData);
     }
 
+    @PostMapping("/create")
+    public String createMagie(@RequestBody Object magieData) {
+        log.info("Création d'une nouvelle magie - Données : {}", magieData);
+        return magieService.createMagie(magieData);
+    }
 }

@@ -20,4 +20,8 @@ public class MagieService {
         return magieAdapter.updateMagie(id, magieData);
     }
 
+    public String createMagie(Object magieData) {
+        return magieAdapter.createMagie(magieData);
+    }
+
 }
