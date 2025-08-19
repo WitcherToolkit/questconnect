@@ -18,4 +18,8 @@ public class EnvoutementService {
         return envoutementAdapter.updateEnvoutement(id, envoutementData);
     }
 
+    public String createEnvoutement(Object envoutementData) {
+        return envoutementAdapter.createEnvoutement(envoutementData);
+    }
+
 }

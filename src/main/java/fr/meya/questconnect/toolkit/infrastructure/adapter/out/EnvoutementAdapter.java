@@ -38,4 +38,17 @@ public class EnvoutementAdapter implements IEnvoutementAdapter {
 
         return response;
     }
+
+    @Override
+    public String createEnvoutement(Object envoutementData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createEnvoutement - Envoi de la requête POST vers {} - Données : {}", url, envoutementData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(envoutementData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createEnvoutement - Réponse reçue : {}", response);
+
+        return response;
+    }
 }

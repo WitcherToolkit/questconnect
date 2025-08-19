@@ -25,4 +25,10 @@ public class EnvoutementController {
         log.info("Modification de l'envoutement - ID : {} - Données : {}", id, envoutementData);
         return envoutementService.updateEnvoutement(id, envoutementData);
     }
+
+    @PostMapping("/create")
+    public String createEnvoutement(@RequestBody Object envoutementData) {
+        log.info("Création d'un nouvel envoutement - Données : {}", envoutementData);
+        return envoutementService.createEnvoutement(envoutementData);
+    }
 }

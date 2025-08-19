@@ -30,7 +30,7 @@ public class RituelController {
 
     @PostMapping("/create")
     public String createRituel(@RequestBody Object rituelData) {
-        log.info("Création dun nouveau rituel - Données : {}", rituelData);
+        log.info("Création d'un nouveau rituel - Données : {}", rituelData);
         return rituelService.createRituel(rituelData);
     }
 
