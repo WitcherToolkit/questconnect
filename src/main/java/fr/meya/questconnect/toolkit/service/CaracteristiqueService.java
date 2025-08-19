@@ -18,4 +18,8 @@ public class CaracteristiqueService {
         return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
     }
 
+    public String createCaracteristique(Object caracteristiqueData) {
+        return caracteristiqueAdapter.createCaracteristique(caracteristiqueData);
+    }
+
 }

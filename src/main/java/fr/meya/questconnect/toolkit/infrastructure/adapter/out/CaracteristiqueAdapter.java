@@ -40,4 +40,17 @@ public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
         return response;
     }
 
+    @Override
+    public String createCaracteristique(Object caracteristiqueData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createCaracteristique - Envoi de la requête POST vers {} - Données : {}", url, caracteristiqueData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(caracteristiqueData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createCaracteristique - Réponse reçue : {}", response);
+
+        return response;
+    }
+
 }

@@ -28,4 +28,10 @@ public class CaracteristiqueController {
         return caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
     }
 
+    @PostMapping("/create")
+    public String createCaracteristique(@RequestBody Object caracteristiqueData) {
+        log.info("Création d'une nouvelle caracteristique - Données : {}", caracteristiqueData);
+        return caracteristiqueService.createCaracteristique(caracteristiqueData);
+    }
+
 }
