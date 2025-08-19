@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Component
 public class ProfessionAdapter implements IProfessionAdapter {
-    @Value("${toolkit.api.base.url}/profession")
+    @Value("${toolkit.api.base.url}/professions")
     private String baseUrl;
 
     @Override
