@@ -38,5 +38,20 @@ public class CompetenceAdapter implements ICompetenceAdapter {
         log.info("Adapter updateCompetence - Réponse reçue : {}", response);
 
         return response;
+
     }
+
+    @Override
+    public String createCompetence(Object competenceData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createCompetence - Envoi de la requête POST vers {} - Données : {}", url, competenceData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(competenceData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createCompetence - Réponse reçue : {}", response);
+
+        return response;
+    }
+
 }

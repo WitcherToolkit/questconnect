@@ -27,4 +27,10 @@ public class CompetenceController {
         return competenceService.updateCompetence(id, competenceData);
     }
 
+    @PostMapping("/create")
+    public String createCompetence(@RequestBody Object competenceData) {
+        log.info("Création d'une nouvelle competence - Données : {}", competenceData);
+        return competenceService.createCompetence(competenceData);
+    }
+
 }

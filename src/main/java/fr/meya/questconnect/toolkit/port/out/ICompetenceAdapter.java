@@ -5,4 +5,6 @@ public interface ICompetenceAdapter {
     String getCompetenceList();
 
     String updateCompetence(Long id, Object competenceData);
+
+    String createCompetence(Object competenceData);
 }

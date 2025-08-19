@@ -17,4 +17,8 @@ public class CompetenceService {
     public String updateCompetence(long id, Object competenceData) {
         return competenceAdapter.updateCompetence(id, competenceData);
     }
+
+    public String createCompetence(Object competenceData) {
+        return competenceAdapter.createCompetence(competenceData);
+    }
 }
