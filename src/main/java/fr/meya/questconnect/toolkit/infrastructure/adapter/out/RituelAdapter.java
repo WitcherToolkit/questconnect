@@ -39,4 +39,17 @@ public class RituelAdapter implements IRituelAdapter {
         return response;
     }
 
+    @Override
+    public String createRituel(Object rituelData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createRituel - Envoi de la requête POST vers {} - Données : {}", url, rituelData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(rituelData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createRituel - Réponse reçue : {}", response);
+
+        return response;
+    }
+
 }

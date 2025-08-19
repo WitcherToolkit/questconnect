@@ -18,4 +18,8 @@ public class RituelService {
         return rituelAdapter.updateRituel(id, rituelData);
     }
 
+    public String createRituel(Object rituelData) {
+        return rituelAdapter.createRituel(rituelData);
+    }
+
 }
