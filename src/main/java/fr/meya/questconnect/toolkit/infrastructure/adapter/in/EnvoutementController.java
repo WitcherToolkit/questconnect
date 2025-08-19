@@ -22,7 +22,7 @@ public class EnvoutementController {
 
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateEnvoutement(@PathVariable long id, @RequestBody Object envoutementData) {
-        log.info("Modification du envoutement - ID : {} - Données : {}", id, envoutementData);
+        log.info("Modification de l'envoutement - ID : {} - Données : {}", id, envoutementData);
         return envoutementService.updateEnvoutement(id, envoutementData);
     }
 }

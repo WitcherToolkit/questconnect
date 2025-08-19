@@ -20,7 +20,7 @@ public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/list";
 
-        log.info("Adapter - Envoi de la requête GET vers {}", url);
+        log.info("Adapter - Envoi de la requête GET getCaracteristiqueList vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
         log.info("Adapter getList - Réponse reçue : {}", response);
 
@@ -35,7 +35,7 @@ public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
 
         HttpEntity<Object> requestEntity = new HttpEntity<>(caracteristiqueData);
         String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
-        log.info("Adapter  update - Réponse reçue : {}", response);
+        log.info("Adapter  updateCaracteristique - Réponse reçue : {}", response);
 
         return response;
     }

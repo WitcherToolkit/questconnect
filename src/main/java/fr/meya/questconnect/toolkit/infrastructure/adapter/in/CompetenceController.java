@@ -14,16 +14,16 @@ public class CompetenceController {
 
     @GetMapping
     public String getCompetenceList(){
-        log.info("Récupération de la liste des caractéristiques");
+        log.info("Récupération de la liste des competences");
         String response = competenceService.getCompetenceList();
-        log.info("Liste des caractéristiques récupérée avec succès");
+        log.info("Liste des competences récupérée avec succès");
 
         return response;
     }
 
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateCompetence(@PathVariable long id, @RequestBody Object competenceData) {
-        log.info("Modification du competence - ID : {} - Données : {}", id, competenceData);
+        log.info("Modification de la competence - ID : {} - Données : {}", id, competenceData);
         return competenceService.updateCompetence(id, competenceData);
     }
 

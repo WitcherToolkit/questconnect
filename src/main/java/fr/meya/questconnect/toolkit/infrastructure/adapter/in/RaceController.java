@@ -23,7 +23,7 @@ public class RaceController {
 
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateRace(@PathVariable long id, @RequestBody Object raceData) {
-        log.info("Modification du race - ID : {} - Données : {}", id, raceData);
+        log.info("Modification de la race - ID : {} - Données : {}", id, raceData);
         return raceService.updateRace(id, raceData);
     }
 }

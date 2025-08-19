@@ -24,7 +24,7 @@ public class CaracteristiqueController {
 
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
-        log.info("Modification du caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
+        log.info("Modification de la caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
         return caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
     }
 

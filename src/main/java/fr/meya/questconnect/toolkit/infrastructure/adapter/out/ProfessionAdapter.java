@@ -3,6 +3,8 @@ package fr.meya.questconnect.toolkit.infrastructure.adapter.out;
 import fr.meya.questconnect.toolkit.port.out.IProfessionAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,6 +34,19 @@ public class ProfessionAdapter implements IProfessionAdapter {
         log.info("Adapter - Envoi de la requête GET getProfessionCompetence vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
         log.info("Adapter getProfessionCompetence - Réponse reçue : {}", response);
+
+        return response;
+    }
+
+    @Override
+    public String updateProfession (Long id, Object raceData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/update/" + id;
+        log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, raceData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(raceData);
+        String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
+        log.info("Adapter updateProfession - Réponse reçue : {}", response);
 
         return response;
     }
