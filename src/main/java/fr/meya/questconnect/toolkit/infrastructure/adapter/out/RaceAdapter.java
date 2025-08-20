@@ -27,6 +27,29 @@ public class RaceAdapter implements IRaceAdapter {
     }
 
     @Override
+    public String getRaceById(Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/" + id;
+        log.info("Adapter - Envoi de la requête GET vers {} - ID : {}", url, id);
+        String response = restTemplate.getForObject(url, String.class);
+        log.info("Adapter getRaceById - Réponse reçue : {}", response);
+        return response;
+    }
+
+    @Override
+    public String createRace(Object raceData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createRace - Envoi de la requête POST vers {} - Données : {}", url, raceData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(raceData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createRace - Réponse reçue : {}", response);
+
+        return response;
+    }
+
+    @Override
     public String updateRace(Long id, Object raceData) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;

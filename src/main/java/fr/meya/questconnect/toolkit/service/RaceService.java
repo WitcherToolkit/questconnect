@@ -15,6 +15,14 @@ public class RaceService {
         return raceAdapter.getRaceList();
     }
 
+    public String getRaceById(long id){
+        return raceAdapter.getRaceById(id);
+    }
+
+    public String createRace(Object raceData) {
+        return raceAdapter.createRace(raceData);
+    }
+
     public String updateRace(long id, Object raceData) {
         return raceAdapter.updateRace(id, raceData);
     }
