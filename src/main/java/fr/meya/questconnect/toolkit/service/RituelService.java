@@ -14,12 +14,16 @@ public class RituelService {
         return rituelAdapter.getRituelList();
     }
 
+    public String createRituel(Object rituelData) {
+        return rituelAdapter.createRituel(rituelData);
+    }
+
     public String updateRituel(long id, Object rituelData) {
         return rituelAdapter.updateRituel(id, rituelData);
     }
 
-    public String createRituel(Object rituelData) {
-        return rituelAdapter.createRituel(rituelData);
+    public String deleteRituel(long id) {
+        return rituelAdapter.deleteRituel(id);
     }
 
 }

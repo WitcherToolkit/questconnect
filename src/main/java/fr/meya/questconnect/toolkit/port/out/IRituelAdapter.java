@@ -4,8 +4,10 @@ public interface IRituelAdapter {
 
     String getRituelList();
 
+    String createRituel(Object rituelData);
+
     String updateRituel(Long id, Object rituelData);
 
-    String createRituel(Object rituelData);
+    String deleteRituel(Long id);
 
 }

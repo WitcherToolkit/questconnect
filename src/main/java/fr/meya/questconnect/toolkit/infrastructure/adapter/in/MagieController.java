@@ -12,39 +12,39 @@ public class MagieController {
     @Autowired
     private MagieService magieService;
 
+    // --- Récupérer la liste des magies ---
     @GetMapping
-    public String getMagieList(){
+    public String getMagieList() {
         log.info("Récupération de la liste des magies");
         String response = magieService.getMagieList();
         log.info("Liste des magies récupérée avec succès");
         return response;
     }
 
-    // Attention, ne pas oublier de rajouter @PathVariable pour récupérer celui de l'url
-    // Attention, ne pas oublier de rajouter @RequestBody
-    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateMagie(@PathVariable long id, @RequestBody Object magieData) {
-        log.info("Modification de la magie - ID : {} - Données : {}", id, magieData);
-        String response = magieService.updateMagie(id, magieData);
-        log.info("Magie modifiée avec succès");
-
-        return response;
-    }
-
+    // --- Créer une nouvelle magie ---
     @PostMapping("/create")
     public String createMagie(@RequestBody Object magieData) {
         log.info("Création d'une nouvelle magie - Données : {}", magieData);
         String response = magieService.createMagie(magieData);
         log.info("Magie créée avec succès");
-
         return response;
     }
 
+    // --- Mettre à jour une magie existante ---
+    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String updateMagie(@PathVariable long id, @RequestBody Object magieData) {
+        log.info("Modification de la magie - ID : {} - Données : {}", id, magieData);
+        String response = magieService.updateMagie(id, magieData);
+        log.info("Magie modifiée avec succès");
+        return response;
+    }
+
+    // --- Supprimer une magie ---
     @DeleteMapping("/delete/{id}")
     public String deleteMagie(@PathVariable long id) {
         log.info("Suppression de la magie - ID : {}", id);
         String response = magieService.deleteMagie(id);
-        log.info("Magie suprimée avec succès");
+        log.info("Magie supprimée avec succès");
         return response;
     }
 

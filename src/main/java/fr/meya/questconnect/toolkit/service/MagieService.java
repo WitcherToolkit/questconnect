@@ -16,12 +16,12 @@ public class MagieService {
         return magieAdapter.getMagieList();
     }
 
-    public String updateMagie(long id, Object magieData) {
-        return magieAdapter.updateMagie(id, magieData);
-    }
-
     public String createMagie(Object magieData) {
         return magieAdapter.createMagie(magieData);
+    }
+
+    public String updateMagie(long id, Object magieData) {
+        return magieAdapter.updateMagie(id, magieData);
     }
 
     public String deleteMagie(long id) {
