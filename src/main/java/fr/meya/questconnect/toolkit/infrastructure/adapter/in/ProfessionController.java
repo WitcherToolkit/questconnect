@@ -3,7 +3,9 @@ package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 import fr.meya.questconnect.toolkit.service.ProfessionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @RestController
@@ -30,10 +32,22 @@ public class ProfessionController {
         return response;
     }
 
+    @PostMapping("/create")
+    public String createProfession(@RequestBody Object professionData) {
+        log.info("Création d'une nouvelle profession - Données : {}", professionData);
+        String response = professionService.createProfession(professionData);
+        log.info("Adapter createProfession - Réponse reçue : {}", response);
+
+        return response;
+    }
+
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateProfession(@PathVariable long id, @RequestBody Object professionData) {
         log.info("Modification de la profession - ID : {} - Données : {}", id, professionData);
-        return professionService.updateProfession(id, professionData);
+        String response = professionService.updateProfession(id, professionData);
+        log.info("Adapter updateProfession - Réponse reçue : {}", response);
+
+        return response;
     }
 
 }

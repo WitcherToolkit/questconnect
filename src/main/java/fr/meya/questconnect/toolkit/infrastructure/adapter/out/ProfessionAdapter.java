@@ -39,6 +39,19 @@ public class ProfessionAdapter implements IProfessionAdapter {
     }
 
     @Override
+    public String createProfession(Object professionData) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/create";
+        log.info("Adapter createProfession - Envoi de la requête POST vers {} - Données : {}", url, professionData);
+
+        HttpEntity<Object> requestEntity = new HttpEntity<>(professionData);
+        String response = restTemplate.postForObject(url, requestEntity, String.class);
+        log.info("Adapter createProfession - Réponse reçue : {}", response);
+
+        return response;
+    }
+
+    @Override
     public String updateProfession (Long id, Object raceData) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;

@@ -22,16 +22,22 @@ public class CaracteristiqueController {
         return response;
     }
 
-    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
-        log.info("Modification de la caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
-        return caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
-    }
-
     @PostMapping("/create")
     public String createCaracteristique(@RequestBody Object caracteristiqueData) {
         log.info("Création d'une nouvelle caracteristique - Données : {}", caracteristiqueData);
-        return caracteristiqueService.createCaracteristique(caracteristiqueData);
+        String response = caracteristiqueService.createCaracteristique(caracteristiqueData);
+        log.info("Adapter createCaracteristique - Réponse reçue : {}", response);
+
+        return response;
     }
 
+
+    @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
+        log.info("Modification de la caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
+        String response = caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
+        log.info("Adapter updateCaracteristique - Réponse reçue : {}", response);
+
+        return response;
+    }
 }

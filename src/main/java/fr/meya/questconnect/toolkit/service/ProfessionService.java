@@ -17,6 +17,10 @@ public class ProfessionService {
         return professionAdapter.getProfessionCompetences(id);
     }
 
+    public String createProfession(Object professionData) {
+        return professionAdapter.createProfession(professionData);
+    }
+
     public String updateProfession (Long id, Object raceData) {
         return professionAdapter.updateProfession (id, raceData);
     }

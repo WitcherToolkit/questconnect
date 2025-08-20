@@ -14,12 +14,12 @@ public class CaracteristiqueService {
         return caracteristiqueAdapter.getCaracteristiqueList();
     }
 
-    public String updateCaracteristique(long id, Object caracteristiqueData) {
-        return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
-    }
-
     public String createCaracteristique(Object caracteristiqueData) {
         return caracteristiqueAdapter.createCaracteristique(caracteristiqueData);
+    }
+
+    public String updateCaracteristique(long id, Object caracteristiqueData) {
+        return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
     }
 
 }

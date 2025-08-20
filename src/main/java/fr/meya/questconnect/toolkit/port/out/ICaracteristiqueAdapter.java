@@ -4,8 +4,8 @@ public interface ICaracteristiqueAdapter {
 
     String getCaracteristiqueList();
 
-    String updateCaracteristique(Long id, Object caracteristiqueData);
-
     String createCaracteristique(Object caracteristiqueData);
+
+    String updateCaracteristique(Long id, Object caracteristiqueData);
 
 }

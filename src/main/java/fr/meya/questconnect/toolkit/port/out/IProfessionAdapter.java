@@ -6,5 +6,7 @@ public interface IProfessionAdapter {
 
     String getProfessionCompetences(Long id);
 
+    String createProfession(Object professionData);
+
     String updateProfession(Long id, Object professionData);
 }
