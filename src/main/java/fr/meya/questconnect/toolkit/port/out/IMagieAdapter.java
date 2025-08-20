@@ -8,4 +8,6 @@ public interface IMagieAdapter {
 
     String createMagie(Object magieData);
 
+    String deleteMagie(Long id);
+
 }

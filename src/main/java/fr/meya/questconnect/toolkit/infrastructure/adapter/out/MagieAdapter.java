@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -50,5 +51,17 @@ public class MagieAdapter  implements IMagieAdapter {
         log.info("Adapter createMagie - Réponse reçue : {}", response);
 
         return response;
+    }
+
+    @Override
+    public String deleteMagie(Long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = baseUrl + "/delete/" + id;
+        log.info("Adapter deleteMagie - Envoi de la requête DELETE vers {} - ID : {}", url, id);
+
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
+        log.info("Adapter deleteMagie - Réponse reçue : {}", response.getBody());
+
+        return response.getBody();
     }
 }

@@ -24,4 +24,8 @@ public class MagieService {
         return magieAdapter.createMagie(magieData);
     }
 
+    public String deleteMagie(long id) {
+        return magieAdapter.deleteMagie(id);
+    }
+
 }

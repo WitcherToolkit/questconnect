@@ -25,12 +25,27 @@ public class MagieController {
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateMagie(@PathVariable long id, @RequestBody Object magieData) {
         log.info("Modification de la magie - ID : {} - Données : {}", id, magieData);
-        return magieService.updateMagie(id, magieData);
+        String response = magieService.updateMagie(id, magieData);
+        log.info("Magie modifiée avec succès");
+
+        return response;
     }
 
     @PostMapping("/create")
     public String createMagie(@RequestBody Object magieData) {
         log.info("Création d'une nouvelle magie - Données : {}", magieData);
-        return magieService.createMagie(magieData);
+        String response = magieService.createMagie(magieData);
+        log.info("Magie créée avec succès");
+
+        return response;
     }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteMagie(@PathVariable long id) {
+        log.info("Suppression de la magie - ID : {}", id);
+        String response = magieService.deleteMagie(id);
+        log.info("Magie suprimée avec succès");
+        return response;
+    }
+
 }
