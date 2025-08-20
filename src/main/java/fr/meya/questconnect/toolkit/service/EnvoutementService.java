@@ -14,12 +14,16 @@ public class EnvoutementService {
         return envoutementAdapter.getEnvoutementList();
     }
 
+    public String createEnvoutement(Object envoutementData) {
+        return envoutementAdapter.createEnvoutement(envoutementData);
+    }
+
     public String updateEnvoutement(long id, Object envoutementData) {
         return envoutementAdapter.updateEnvoutement(id, envoutementData);
     }
 
-    public String createEnvoutement(Object envoutementData) {
-        return envoutementAdapter.createEnvoutement(envoutementData);
+    public String deleteEnvoutement(long id) {
+        return envoutementAdapter.deleteEnvoutement(id);
     }
 
 }
