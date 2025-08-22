@@ -9,4 +9,6 @@ public interface IProfessionAdapter {
     String createProfession(Object professionData);
 
     String updateProfession(Long id, Object professionData);
+
+    String deleteProfession(Long id);
 }

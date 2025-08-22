@@ -24,4 +24,8 @@ public class ProfessionService {
     public String updateProfession (Long id, Object raceData) {
         return professionAdapter.updateProfession (id, raceData);
     }
+
+    public String deleteProfession(Long id) {
+        return professionAdapter.deleteProfession(id);
+    }
 }
