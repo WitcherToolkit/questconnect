@@ -27,4 +27,7 @@ public class RaceService {
         return raceAdapter.updateRace(id, raceData);
     }
 
+    public String deleteRace(long id) {
+        return raceAdapter.deleteRace(id);
+    }
 }
