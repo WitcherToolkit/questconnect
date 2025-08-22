@@ -13,31 +13,39 @@ public class CaracteristiqueController {
     @Autowired
     private CaracteristiqueService caracteristiqueService;
 
+    // --- Récupérer la liste des caractéristiques ---
     @GetMapping
-    public String getCaracteristiqueList(){
+    public String getCaracteristiqueList() {
         log.info("Récupération de la liste des caractéristiques");
         String response = caracteristiqueService.getCaracteristiqueList();
         log.info("Liste des caractéristiques récupérée avec succès");
-
         return response;
     }
 
+    // --- Créer une nouvelle caractéristique ---
     @PostMapping("/create")
     public String createCaracteristique(@RequestBody Object caracteristiqueData) {
-        log.info("Création d'une nouvelle caracteristique - Données : {}", caracteristiqueData);
+        log.info("Création d'une nouvelle caractéristique - Données : {}", caracteristiqueData);
         String response = caracteristiqueService.createCaracteristique(caracteristiqueData);
-        log.info("Adapter createCaracteristique - Réponse reçue : {}", response);
-
+        log.info("Réponse création : {}", response);
         return response;
     }
 
-
+    // --- Mettre à jour une caractéristique ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
     public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
-        log.info("Modification de la caracteristique - ID : {} - Données : {}", id, caracteristiqueData);
+        log.info("Modification de la caractéristique - ID : {} - Données : {}", id, caracteristiqueData);
         String response = caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
-        log.info("Adapter updateCaracteristique - Réponse reçue : {}", response);
+        log.info("Réponse mise à jour : {}", response);
+        return response;
+    }
 
+    // --- Supprimer une caractéristique ---
+    @DeleteMapping("/delete/{id}")
+    public String deleteCaracteristique(@PathVariable long id) {
+        log.info("Suppression de la caractéristique - ID : {}", id);
+        String response = caracteristiqueService.deleteCaracteristique(id);
+        log.info("Caractéristique supprimée avec succès");
         return response;
     }
 }

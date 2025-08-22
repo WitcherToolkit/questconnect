@@ -22,4 +22,8 @@ public class CaracteristiqueService {
         return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
     }
 
+    public String deleteCaracteristique(long id) {
+        return caracteristiqueAdapter.deleteCaracteristique(id);
+    }
+
 }

@@ -14,11 +14,16 @@ public class CompetenceService {
         return competenceAdapter.getCompetenceList();
     }
 
+    public String createCompetence(Object competenceData) {
+        return competenceAdapter.createCompetence(competenceData);
+    }
+
     public String updateCompetence(long id, Object competenceData) {
         return competenceAdapter.updateCompetence(id, competenceData);
     }
 
-    public String createCompetence(Object competenceData) {
-        return competenceAdapter.createCompetence(competenceData);
+    public String deleteCompetence(long id) {
+        return competenceAdapter.deleteCompetence(id);
     }
+
 }

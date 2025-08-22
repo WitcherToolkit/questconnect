@@ -8,4 +8,5 @@ public interface ICaracteristiqueAdapter {
 
     String updateCaracteristique(Long id, Object caracteristiqueData);
 
+    String deleteCaracteristique(Long id);
 }
