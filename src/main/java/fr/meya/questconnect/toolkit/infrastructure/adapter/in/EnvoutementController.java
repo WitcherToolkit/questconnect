@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.EnvoutementService;
+import fr.meya.questconnect.toolkit.domaine.port.in.IEnvoutementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/envoutements")
 public class EnvoutementController {
     @Autowired
-    private EnvoutementService envoutementService;
+    private IEnvoutementService envoutementService;
 
     // --- Récupérer la liste des envoûtements ---
     @GetMapping

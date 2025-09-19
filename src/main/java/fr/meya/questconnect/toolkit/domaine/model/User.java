@@ -1,4 +1,4 @@
-package fr.meya.questconnect.toolkit.domaine;
+package fr.meya.questconnect.toolkit.domaine.model;
 
 import lombok.Data;
 import java.util.Set;

@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.CaracteristiqueService;
+import fr.meya.questconnect.toolkit.domaine.port.in.ICaracteristiqueService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class CaracteristiqueController {
 
     @Autowired
-    private CaracteristiqueService caracteristiqueService;
+    private ICaracteristiqueService caracteristiqueService;
 
     // --- Récupérer la liste des caractéristiques ---
     @GetMapping

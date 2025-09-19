@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.service;
 
-import fr.meya.questconnect.toolkit.domaine.User;
+import fr.meya.questconnect.toolkit.domaine.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

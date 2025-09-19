@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.RaceService;
+import fr.meya.questconnect.toolkit.domaine.port.in.IRaceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/races")
 public class RaceController {
     @Autowired
-    private RaceService raceService;
+    private IRaceService raceService;
 
     // --- Récupérer la liste des races ---
     @GetMapping

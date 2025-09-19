@@ -19,7 +19,7 @@ public class MagieAdapter  implements IMagieAdapter {
 
     // --- Récupérer la liste des magies ---
     @Override
-    public String getMagieList() {
+    public String getMagieList(String niveau) {
         String url = baseUrl + "/list";
         log.info("Adapter getMagieList - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);

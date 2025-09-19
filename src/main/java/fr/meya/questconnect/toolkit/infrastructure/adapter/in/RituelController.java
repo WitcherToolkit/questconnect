@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.RituelService;
+import fr.meya.questconnect.toolkit.domaine.port.in.IRituelService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class RituelController {
 
     @Autowired
-    private RituelService rituelService;
+    private IRituelService rituelService;
 
     // --- Récupérer la liste des rituels ---
     @GetMapping

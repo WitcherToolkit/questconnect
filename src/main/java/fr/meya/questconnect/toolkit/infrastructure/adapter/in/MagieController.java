@@ -1,22 +1,23 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.MagieService;
+import fr.meya.questconnect.toolkit.domaine.port.in.IMagieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/magies")
 public class MagieController {
 
     @Autowired
-    private MagieService magieService;
+    private IMagieService magieService;
 
     // --- Récupérer la liste des magies ---
     @GetMapping
-    public String getMagieList() {
-        log.info("Récupération de la liste des magies");
-        String response = magieService.getMagieList();
+    public String getMagieList(@RequestParam(required = false) String niveau) {
+        log.info("Récupération de la liste des magies" + (niveau != null ? " de niveau " + niveau : ""));
+        String response = magieService.getMagieList(niveau);
         log.info("Liste des magies récupérée avec succès");
         return response;
     }

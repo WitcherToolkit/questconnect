@@ -2,7 +2,7 @@ package fr.meya.questconnect.toolkit.port.out;
 
 public interface IMagieAdapter {
 
-    String getMagieList();
+    String getMagieList(String niveau);
 
     String createMagie(Object magieData);
 

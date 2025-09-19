@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.service;
 
-import fr.meya.questconnect.toolkit.domaine.User;
+import fr.meya.questconnect.toolkit.domaine.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.*;

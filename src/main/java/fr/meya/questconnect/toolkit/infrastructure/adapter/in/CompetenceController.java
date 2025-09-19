@@ -1,6 +1,6 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
-import fr.meya.questconnect.toolkit.service.CompetenceService;
+import fr.meya.questconnect.toolkit.domaine.port.in.ICompetenceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/competences")
 public class CompetenceController {
     @Autowired
-    private CompetenceService competenceService;
+    private ICompetenceService competenceService;
 
     // --- Récupérer la liste des compétences ---
     @GetMapping

@@ -1,12 +1,13 @@
 package fr.meya.questconnect.toolkit.service;
 
+import fr.meya.questconnect.toolkit.domaine.port.in.IRaceService;
 import fr.meya.questconnect.toolkit.infrastructure.adapter.out.RaceAdapter;
 import fr.meya.questconnect.toolkit.port.out.IRaceAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RaceService {
+public class RaceService implements IRaceService {
 
     @Autowired
     private IRaceAdapter raceAdapter;

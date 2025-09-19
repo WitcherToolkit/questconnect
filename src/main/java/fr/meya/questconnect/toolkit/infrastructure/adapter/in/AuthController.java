@@ -1,7 +1,7 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 
 import fr.meya.questconnect.config.JwtUtil;
-import fr.meya.questconnect.toolkit.domaine.User;
+import fr.meya.questconnect.toolkit.domaine.model.User;
 import fr.meya.questconnect.toolkit.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
