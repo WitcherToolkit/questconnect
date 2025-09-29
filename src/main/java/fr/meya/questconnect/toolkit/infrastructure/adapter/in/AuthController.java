@@ -5,6 +5,7 @@ import fr.meya.questconnect.toolkit.domaine.model.User;
 import fr.meya.questconnect.toolkit.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,19 @@ public class AuthController {
         }
         String token = jwtUtil.generateToken(user.getEmail(), user.getRoles());
         return Map.of("token", token);
+    }
+
+    @GetMapping("/me")
+    public Map<String, Object> me(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new RuntimeException("Not authenticated");
+        }
+        String email = authentication.getName();
+        User user = userService.findByEmail(email);
+        return Map.of(
+                "email", user.getEmail(),
+                "roles", user.getRoles()
+        );
     }
 
     @Data

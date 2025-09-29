@@ -9,6 +9,6 @@ public class BCryptGen {
         String hash = encoder.encode("Pa$$W0rdTest");
         System.out.println(hash);
 
-        System.out.println(encoder.matches("Pa$$W0rdTest", "$2a$10$wF2Q2z9Q8pQwQ8pQwQ8pQeQwQ8pQwQ8pQwQ8pQwQ8pQwQ8pQwQ8pQ"));
+        System.out.println(encoder.matches("Pa$$W0rdTest", "$2a$10$irJVoZ3c4yXCCVkn99z9WeawJSnRtMypF4d8bVNP7vJ2H.Tb.6p5G"));
     }
 }
