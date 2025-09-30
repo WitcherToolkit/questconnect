@@ -3,6 +3,8 @@ package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 import fr.meya.questconnect.toolkit.domaine.port.in.IPersonnageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -24,8 +26,9 @@ public class PersonnageController {
 
     // --- Créer un nouveau personnage ---
     @PostMapping("/create")
-    public String createPersonnage(@RequestBody Object personnageData) {
+    public String createPersonnage(@RequestBody Object personnageData, @AuthenticationPrincipal UserDetails user) {
         log.info("Création d'une nouvelle personnage - Données : {}", personnageData);
+        String username = user.getUsername();
         String response = personnageService.createPersonnage(personnageData);
         log.info("Personnage créée avec succès");
         return response;
