@@ -19,11 +19,11 @@ public class CompetenceService implements ICompetenceService {
         return competenceAdapter.createCompetence(competenceData);
     }
 
-    public String updateCompetence(long id, Object competenceData) {
+    public String updateCompetence(String id, Object competenceData) {
         return competenceAdapter.updateCompetence(id, competenceData);
     }
 
-    public String deleteCompetence(long id) {
+    public String deleteCompetence(String id) {
         return competenceAdapter.deleteCompetence(id);
     }
 

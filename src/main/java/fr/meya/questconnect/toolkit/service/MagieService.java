@@ -21,11 +21,11 @@ public class MagieService implements IMagieService {
         return magieAdapter.createMagie(magieData);
     }
 
-    public String updateMagie(long id, Object magieData) {
+    public String updateMagie(String id, Object magieData) {
         return magieAdapter.updateMagie(id, magieData);
     }
 
-    public String deleteMagie(long id) {
+    public String deleteMagie(String id) {
         return magieAdapter.deleteMagie(id);
     }
 

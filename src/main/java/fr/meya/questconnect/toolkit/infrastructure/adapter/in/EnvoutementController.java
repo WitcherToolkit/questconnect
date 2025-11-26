@@ -32,7 +32,7 @@ public class EnvoutementController {
 
     // --- Mettre à jour un envoûtement existant ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateEnvoutement(@PathVariable long id, @RequestBody Object envoutementData) {
+    public String updateEnvoutement(@PathVariable String id, @RequestBody Object envoutementData) {
         log.info("Modification de l'envoûtement - ID : {} - Données : {}", id, envoutementData);
         String response = envoutementService.updateEnvoutement(id, envoutementData);
         log.info("Envoûtement modifié avec succès");
@@ -41,7 +41,7 @@ public class EnvoutementController {
 
     // --- Supprimer un envoûtement ---
     @DeleteMapping("/delete/{id}")
-    public String deleteEnvoutement(@PathVariable long id) {
+    public String deleteEnvoutement(@PathVariable String id) {
         log.info("Suppression de l'envoûtement - ID : {}", id);
         String response = envoutementService.deleteEnvoutement(id);
         log.info("Envoûtement supprimé avec succès");

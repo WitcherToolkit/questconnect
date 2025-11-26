@@ -23,7 +23,7 @@ public class RaceController {
 
     // --- Récupérer une race via l'id ---
     @GetMapping("/{id}")
-    public String getRaceById(@PathVariable long id) {
+    public String getRaceById(@PathVariable String id) {
         log.info("Consultation de la race avec l'ID : {}", id);
         String response = raceService.getRaceById(id);
         log.info("Race récupérée avec succès : {}", response);
@@ -42,7 +42,7 @@ public class RaceController {
 
     // --- Mettre à jour une race ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateRace(@PathVariable long id, @RequestBody Object raceData) {
+    public String updateRace(@PathVariable String id, @RequestBody Object raceData) {
         log.info("Modification de la race - ID : {} - Données : {}", id, raceData);
         String response = raceService.updateRace(id, raceData);
         log.info("Race modifiée avec succès");
@@ -51,7 +51,7 @@ public class RaceController {
 
     // --- Supprimer une race ---
     @DeleteMapping("/delete/{id}")
-    public String deleteRace(@PathVariable long id) {
+    public String deleteRace(@PathVariable String id) {
         log.info("Suppression de la race - ID : {}", id);
         String response = raceService.deleteRace(id);
         log.info("Race supprimée avec succès");

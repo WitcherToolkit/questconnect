@@ -29,7 +29,7 @@ public class RaceAdapter implements IRaceAdapter {
 
     // --- Récupérer une race ---
     @Override
-    public String getRaceById(Long id) {
+    public String getRaceById(String id) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/" + id;
         log.info("Adapter - Envoi de la requête GET vers {} - ID : {}", url, id);
@@ -52,7 +52,7 @@ public class RaceAdapter implements IRaceAdapter {
 
     // --- Mettre à jour une race ---
     @Override
-    public String updateRace(Long id, Object raceData) {
+    public String updateRace(String id, Object raceData) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + "/update/" + id;
         log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, raceData);
@@ -64,7 +64,7 @@ public class RaceAdapter implements IRaceAdapter {
 
     // --- Supprimer une race ---
     @Override
-    public String deleteRace(Long id) {
+    public String deleteRace(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteRace - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

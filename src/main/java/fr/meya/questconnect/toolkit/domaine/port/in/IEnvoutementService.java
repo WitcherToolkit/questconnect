@@ -6,8 +6,8 @@ public interface IEnvoutementService {
 
     String createEnvoutement(Object envoutementData);
 
-    String updateEnvoutement(long id, Object envoutementData);
+    String updateEnvoutement(String id, Object envoutementData);
 
-    String deleteEnvoutement(long id);
+    String deleteEnvoutement(String id);
 
 }

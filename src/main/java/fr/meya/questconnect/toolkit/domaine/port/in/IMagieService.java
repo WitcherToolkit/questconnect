@@ -6,8 +6,8 @@ public interface IMagieService {
 
     String createMagie(Object magieData);
 
-    String updateMagie(long id, Object magieData);
+    String updateMagie(String id, Object magieData);
 
-    String deleteMagie(long id);
+    String deleteMagie(String id);
 
 }

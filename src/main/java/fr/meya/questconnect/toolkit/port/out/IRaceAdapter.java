@@ -4,11 +4,11 @@ public interface IRaceAdapter {
 
     String getRaceList();
 
-    String getRaceById(Long id);
+    String getRaceById(String id);
 
     String createRace(Object raceData);
 
-    String updateRace(Long id, Object raceData);
+    String updateRace(String id, Object raceData);
 
-    String deleteRace(Long id);
+    String deleteRace(String id);
 }

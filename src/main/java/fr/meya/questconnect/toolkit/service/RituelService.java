@@ -19,11 +19,11 @@ public class RituelService implements IRituelService {
         return rituelAdapter.createRituel(rituelData);
     }
 
-    public String updateRituel(long id, Object rituelData) {
+    public String updateRituel(String id, Object rituelData) {
         return rituelAdapter.updateRituel(id, rituelData);
     }
 
-    public String deleteRituel(long id) {
+    public String deleteRituel(String id) {
         return rituelAdapter.deleteRituel(id);
     }
 

@@ -23,7 +23,7 @@ public class ProfessionController {
 
     // --- Récupérer une profession avec ses compétences ---
     @GetMapping("/{id}/competences")
-    public String getProfessionCompetences(@PathVariable Long id){
+    public String getProfessionCompetences(@PathVariable String id){
         log.info("Récupération de la liste compétences d'une profession");
         String response =  professionService.getProfessionCompetences(id);
         log.info("Liste compétences d'une profession récupérée avec succès");
@@ -41,7 +41,7 @@ public class ProfessionController {
 
     // --- Mettre à jour une profession ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateProfession(@PathVariable long id, @RequestBody Object professionData) {
+    public String updateProfession(@PathVariable String id, @RequestBody Object professionData) {
         log.info("Modification de la profession - ID : {} - Données : {}", id, professionData);
         String response = professionService.updateProfession(id, professionData);
         log.info("Adapter updateProfession - Réponse reçue : {}", response);
@@ -50,7 +50,7 @@ public class ProfessionController {
 
     // --- Supprimer une profession ---
     @DeleteMapping("/delete/{id}")
-    public String deleteProfession(@PathVariable long id) {
+    public String deleteProfession(@PathVariable String id) {
         log.info("Suppression de la profession - ID : {}", id);
         String response = professionService.deleteProfession(id);
         log.info("Profession supprimée avec succès");

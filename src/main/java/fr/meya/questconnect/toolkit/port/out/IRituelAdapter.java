@@ -6,8 +6,8 @@ public interface IRituelAdapter {
 
     String createRituel(Object rituelData);
 
-    String updateRituel(Long id, Object rituelData);
+    String updateRituel(String id, Object rituelData);
 
-    String deleteRituel(Long id);
+    String deleteRituel(String id);
 
 }

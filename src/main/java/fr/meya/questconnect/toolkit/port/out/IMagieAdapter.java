@@ -6,8 +6,8 @@ public interface IMagieAdapter {
 
     String createMagie(Object magieData);
 
-    String updateMagie(Long id, Object magieData);
+    String updateMagie(String id, Object magieData);
 
-    String deleteMagie(Long id);
+    String deleteMagie(String id);
 
 }

@@ -18,7 +18,7 @@ public class PersonnageAdapter implements IPersonnageAdapter {
 
     // --- Récupérer un personnage ---
     @Override
-    public String getPersonnageById(Long id) {
+    public String getPersonnageById(String id) {
         String url = baseUrl + "/" + id;
         log.info("Adapter getPersonnageById - Envoi de la requête GET vers {}", url);
         String response = restTemplate.getForObject(url, String.class);

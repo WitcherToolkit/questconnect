@@ -4,12 +4,12 @@ public interface IRaceService {
 
     String getRaceList();
 
-    String getRaceById(long id);
+    String getRaceById(String id);
 
     String createRace(Object raceData);
 
-    String updateRace(long id, Object raceData);
+    String updateRace(String id, Object raceData);
 
-    String deleteRace(long id);
+    String deleteRace(String id);
 
 }

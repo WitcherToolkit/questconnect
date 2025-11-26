@@ -6,8 +6,8 @@ public interface ICaracteristiqueService {
 
     String createCaracteristique(Object caracteristiqueData);
 
-    String updateCaracteristique(long id, Object caracteristiqueData);
+    String updateCaracteristique(String id, Object caracteristiqueData);
 
-    String deleteCaracteristique(long id);
+    String deleteCaracteristique(String id);
 
 }

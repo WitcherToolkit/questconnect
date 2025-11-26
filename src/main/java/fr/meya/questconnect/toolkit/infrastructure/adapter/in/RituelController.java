@@ -33,7 +33,7 @@ public class RituelController {
 
     // --- Mettre à jour un rituel existant ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateRituel(@PathVariable long id, @RequestBody Object rituelData) {
+    public String updateRituel(@PathVariable String id, @RequestBody Object rituelData) {
         log.info("Modification du rituel - ID : {} - Données : {}", id, rituelData);
         String response = rituelService.updateRituel(id, rituelData);
         log.info("Rituel modifié avec succès");
@@ -42,7 +42,7 @@ public class RituelController {
 
     // --- Supprimer un rituel ---
     @DeleteMapping("/delete/{id}")
-    public String deleteRituel(@PathVariable long id) {
+    public String deleteRituel(@PathVariable String id) {
         log.info("Suppression de la rituel - ID : {}", id);
         String response = rituelService.deleteRituel(id);
         log.info("Rituel supprimée avec succès");

@@ -6,8 +6,8 @@ public interface ICompetenceService {
 
     String createCompetence(Object competenceData);
 
-    String updateCompetence(long id, Object competenceData);
+    String updateCompetence(String id, Object competenceData);
 
-    String deleteCompetence(long id);
+    String deleteCompetence(String id);
 
 }

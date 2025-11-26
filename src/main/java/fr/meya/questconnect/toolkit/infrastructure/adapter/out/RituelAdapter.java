@@ -41,7 +41,7 @@ public class RituelAdapter implements IRituelAdapter {
 
     // --- Mettre à jour un rituel existant ---
     @Override
-    public String updateRituel(Long id, Object rituelData) {
+    public String updateRituel(String id, Object rituelData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter updateRituel - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, rituelData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(rituelData);
@@ -52,7 +52,7 @@ public class RituelAdapter implements IRituelAdapter {
 
     // --- Supprimer une rituel ---
     @Override
-    public String deleteRituel(Long id) {
+    public String deleteRituel(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteRituel - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

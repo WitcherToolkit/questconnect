@@ -6,8 +6,8 @@ public interface IRituelService {
 
     String createRituel(Object rituelData);
 
-    String updateRituel(long id, Object rituelData);
+    String updateRituel(String id, Object rituelData);
 
-    String deleteRituel(long id);
+    String deleteRituel(String id);
 
 }

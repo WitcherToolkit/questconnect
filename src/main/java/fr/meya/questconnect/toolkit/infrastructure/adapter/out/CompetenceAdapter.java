@@ -41,7 +41,7 @@ public class CompetenceAdapter implements ICompetenceAdapter {
 
     // --- Mettre à jour une compétence ---
     @Override
-    public String updateCompetence(Long id, Object competenceData) {
+    public String updateCompetence(String id, Object competenceData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter updateCompetence - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, competenceData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(competenceData);
@@ -53,7 +53,7 @@ public class CompetenceAdapter implements ICompetenceAdapter {
 
     // --- Supprimer une compétence ---
     @Override
-    public String deleteCompetence(Long id) {
+    public String deleteCompetence(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteCompetence - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

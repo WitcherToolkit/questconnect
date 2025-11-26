@@ -17,7 +17,7 @@ public class PersonnageController {
 
     // --- Consulter un persoonage ---
     @GetMapping("/{id}")
-    public String getPersonnageById(@PathVariable Long id) {
+    public String getPersonnageById(@PathVariable String id) {
         log.info("Consultation du personnage - ID : {}", id);
         String response = personnageService.getPersonnageById(id);
         log.info("Personnage récupéré avec succès");

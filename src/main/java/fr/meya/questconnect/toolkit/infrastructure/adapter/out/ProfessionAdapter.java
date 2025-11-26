@@ -29,7 +29,7 @@ public class ProfessionAdapter implements IProfessionAdapter {
 
     // --- Récupérer une profession avec des compétences ---
     @Override
-    public String getProfessionCompetences(Long id) {
+    public String getProfessionCompetences(String id) {
         String url = baseUrl + "/detail/" + id;
         log.info("Adapter - Envoi de la requête GET getProfessionCompetence vers {}", url);
         String response = restTemplate.getForObject(url, String.class);
@@ -50,7 +50,7 @@ public class ProfessionAdapter implements IProfessionAdapter {
 
     // --- Mettre à jour une profession ---
     @Override
-    public String updateProfession (Long id, Object professionData) {
+    public String updateProfession (String id, Object professionData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, professionData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(professionData);
@@ -61,7 +61,7 @@ public class ProfessionAdapter implements IProfessionAdapter {
 
     // --- Supprimer une profession ---
     @Override
-    public String deleteProfession(Long id) {
+    public String deleteProfession(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteProfession - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

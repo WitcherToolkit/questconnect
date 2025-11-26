@@ -41,7 +41,7 @@ public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
 
     // --- Mettre à jour une caractéristique ---
     @Override
-    public String updateCaracteristique(Long id, Object caracteristiqueData) {
+    public String updateCaracteristique(String id, Object caracteristiqueData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter updateCaracteristique - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, caracteristiqueData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(caracteristiqueData);
@@ -52,7 +52,7 @@ public class CaracteristiqueAdapter implements ICaracteristiqueAdapter {
 
     // --- Supprimer une caractéristique ---
     @Override
-    public String deleteCaracteristique(Long id) {
+    public String deleteCaracteristique(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteCaracteristique - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

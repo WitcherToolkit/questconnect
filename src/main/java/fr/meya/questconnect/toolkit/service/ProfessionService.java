@@ -14,7 +14,7 @@ public class ProfessionService implements IProfessionService {
         return professionAdapter.getProfessionList();
     }
 
-    public String getProfessionCompetences(Long id) {
+    public String getProfessionCompetences(String id) {
         return professionAdapter.getProfessionCompetences(id);
     }
 
@@ -22,11 +22,11 @@ public class ProfessionService implements IProfessionService {
         return professionAdapter.createProfession(professionData);
     }
 
-    public String updateProfession (long id, Object raceData) {
+    public String updateProfession (String id, Object raceData) {
         return professionAdapter.updateProfession (id, raceData);
     }
 
-    public String deleteProfession(long id) {
+    public String deleteProfession(String id) {
         return professionAdapter.deleteProfession(id);
     }
 }

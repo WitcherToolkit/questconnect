@@ -6,7 +6,7 @@ public interface ICaracteristiqueAdapter {
 
     String createCaracteristique(Object caracteristiqueData);
 
-    String updateCaracteristique(Long id, Object caracteristiqueData);
+    String updateCaracteristique(String id, Object caracteristiqueData);
 
-    String deleteCaracteristique(Long id);
+    String deleteCaracteristique(String id);
 }

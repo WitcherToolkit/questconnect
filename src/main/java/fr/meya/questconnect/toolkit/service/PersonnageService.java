@@ -11,7 +11,7 @@ public class PersonnageService implements IPersonnageService {
     private IPersonnageAdapter personnageAdapter;
 
     @Override
-    public String getPersonnageById(Long id) {
+    public String getPersonnageById(String id) {
         return personnageAdapter.getPersonnageById(id);
     }
 

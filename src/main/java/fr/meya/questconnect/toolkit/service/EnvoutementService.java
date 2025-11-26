@@ -19,11 +19,11 @@ public class EnvoutementService implements IEnvoutementService {
         return envoutementAdapter.createEnvoutement(envoutementData);
     }
 
-    public String updateEnvoutement(long id, Object envoutementData) {
+    public String updateEnvoutement(String id, Object envoutementData) {
         return envoutementAdapter.updateEnvoutement(id, envoutementData);
     }
 
-    public String deleteEnvoutement(long id) {
+    public String deleteEnvoutement(String id) {
         return envoutementAdapter.deleteEnvoutement(id);
     }
 

@@ -6,7 +6,7 @@ public interface ICompetenceAdapter {
 
     String createCompetence(Object competenceData);
 
-    String updateCompetence(Long id, Object competenceData);
+    String updateCompetence(String id, Object competenceData);
 
-    String deleteCompetence(Long id);
+    String deleteCompetence(String id);
 }

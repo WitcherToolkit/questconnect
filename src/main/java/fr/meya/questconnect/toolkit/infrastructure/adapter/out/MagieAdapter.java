@@ -40,7 +40,7 @@ public class MagieAdapter  implements IMagieAdapter {
 
     // --- Mettre à jour une magie existante ---
     @Override
-    public String updateMagie(Long id, Object magieData) {
+    public String updateMagie(String id, Object magieData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter updateMagie - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, magieData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(magieData);
@@ -51,7 +51,7 @@ public class MagieAdapter  implements IMagieAdapter {
 
     // --- Supprimer une magie ---
     @Override
-    public String deleteMagie(Long id) {
+    public String deleteMagie(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteMagie - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

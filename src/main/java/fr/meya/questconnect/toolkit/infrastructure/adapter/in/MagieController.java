@@ -33,7 +33,7 @@ public class MagieController {
 
     // --- Mettre à jour une magie existante ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateMagie(@PathVariable long id, @RequestBody Object magieData) {
+    public String updateMagie(@PathVariable String id, @RequestBody Object magieData) {
         log.info("Modification de la magie - ID : {} - Données : {}", id, magieData);
         String response = magieService.updateMagie(id, magieData);
         log.info("Magie modifiée avec succès");
@@ -42,7 +42,7 @@ public class MagieController {
 
     // --- Supprimer une magie ---
     @DeleteMapping("/delete/{id}")
-    public String deleteMagie(@PathVariable long id) {
+    public String deleteMagie(@PathVariable String id) {
         log.info("Suppression de la magie - ID : {}", id);
         String response = magieService.deleteMagie(id);
         log.info("Magie supprimée avec succès");

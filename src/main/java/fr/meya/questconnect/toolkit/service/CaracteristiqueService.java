@@ -19,11 +19,11 @@ public class CaracteristiqueService implements ICaracteristiqueService {
         return caracteristiqueAdapter.createCaracteristique(caracteristiqueData);
     }
 
-    public String updateCaracteristique(long id, Object caracteristiqueData) {
+    public String updateCaracteristique(String id, Object caracteristiqueData) {
         return caracteristiqueAdapter.updateCaracteristique(id, caracteristiqueData);
     }
 
-    public String deleteCaracteristique(long id) {
+    public String deleteCaracteristique(String id) {
         return caracteristiqueAdapter.deleteCaracteristique(id);
     }
 

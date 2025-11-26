@@ -16,7 +16,7 @@ public class RaceService implements IRaceService {
         return raceAdapter.getRaceList();
     }
 
-    public String getRaceById(long id){
+    public String getRaceById(String id){
         return raceAdapter.getRaceById(id);
     }
 
@@ -24,11 +24,11 @@ public class RaceService implements IRaceService {
         return raceAdapter.createRace(raceData);
     }
 
-    public String updateRace(long id, Object raceData) {
+    public String updateRace(String id, Object raceData) {
         return raceAdapter.updateRace(id, raceData);
     }
 
-    public String deleteRace(long id) {
+    public String deleteRace(String id) {
         return raceAdapter.deleteRace(id);
     }
 }

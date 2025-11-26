@@ -40,7 +40,7 @@ public class EnvoutementAdapter implements IEnvoutementAdapter {
 
     // --- Mettre à jour un envoûtement existant ---
     @Override
-    public String updateEnvoutement(Long id, Object envoutementData) {
+    public String updateEnvoutement(String id, Object envoutementData) {
         String url = baseUrl + "/update/" + id;
         log.info("Adapter updateEnvoutement - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, envoutementData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(envoutementData);
@@ -51,7 +51,7 @@ public class EnvoutementAdapter implements IEnvoutementAdapter {
 
     // --- Supprimer un envoûtement ---
     @Override
-    public String deleteEnvoutement(Long id) {
+    public String deleteEnvoutement(String id) {
         String url = baseUrl + "/delete/" + id;
         log.info("Adapter deleteEnvoutement - Envoi de la requête DELETE vers {} - ID : {}", url, id);
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);

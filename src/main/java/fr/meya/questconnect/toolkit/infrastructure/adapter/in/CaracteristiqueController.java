@@ -33,7 +33,7 @@ public class CaracteristiqueController {
 
     // --- Mettre à jour une caractéristique ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateCaracteristique(@PathVariable long id, @RequestBody Object caracteristiqueData) {
+    public String updateCaracteristique(@PathVariable String id, @RequestBody Object caracteristiqueData) {
         log.info("Modification de la caractéristique - ID : {} - Données : {}", id, caracteristiqueData);
         String response = caracteristiqueService.updateCaracteristique(id, caracteristiqueData);
         log.info("Réponse mise à jour : {}", response);
@@ -42,7 +42,7 @@ public class CaracteristiqueController {
 
     // --- Supprimer une caractéristique ---
     @DeleteMapping("/delete/{id}")
-    public String deleteCaracteristique(@PathVariable long id) {
+    public String deleteCaracteristique(@PathVariable String id) {
         log.info("Suppression de la caractéristique - ID : {}", id);
         String response = caracteristiqueService.deleteCaracteristique(id);
         log.info("Caractéristique supprimée avec succès");

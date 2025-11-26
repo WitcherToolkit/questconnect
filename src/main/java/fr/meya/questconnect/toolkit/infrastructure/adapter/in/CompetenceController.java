@@ -32,7 +32,7 @@ public class CompetenceController {
 
     // --- Mettre à jour une compétence ---
     @RequestMapping(value = "/update/{id}", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String updateCompetence(@PathVariable long id, @RequestBody Object competenceData) {
+    public String updateCompetence(@PathVariable String id, @RequestBody Object competenceData) {
         log.info("Modification de la competence - ID : {} - Données : {}", id, competenceData);
         String response = competenceService.updateCompetence(id, competenceData);
         log.info("Réponse mise à jour : {}", response);
@@ -41,7 +41,7 @@ public class CompetenceController {
 
     // --- Supprimer une compétence ---
     @DeleteMapping("/delete/{id}")
-    public String deleteCompetence(@PathVariable long id) {
+    public String deleteCompetence(@PathVariable String id) {
         log.info("Suppression de la caractéristique - ID : {}", id);
         String response = competenceService.deleteCompetence(id);
         log.info("Compétence supprimée avec succès");
