@@ -1,7 +1,6 @@
 package fr.meya.questconnect.config;
 
 import fr.meya.questconnect.toolkit.service.CustomUserDetailsService;
-import io.jsonwebtoken.JwtException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,17 +16,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Intercepteur de requêtes HTTP pour l'authentification JWT.
+ */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    // 1. LOGGER en premier (attribut de classe statique)
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
-    // 2. Puis vos attributs d'instance
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
 
-    // 3. Constructor
     public JwtAuthenticationFilter(JwtUtil jwtUtil, CustomUserDetailsService userDetailsService) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
@@ -44,8 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authenticateUser(request, token);
             }
         } catch (Exception e) {
-            // Log l'erreur mais ne pas interrompre la chaîne de filtres
-            logger.error("Cannot set user authentication: {}", e.getMessage());
+            logger.error("Impossible de définir l'authentification utilisateur: {}", e.getMessage());
         }
 
         filterChain.doFilter(request, response);
@@ -60,45 +58,36 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private void authenticateUser(HttpServletRequest request, String token) {
-        try {
-            // Valider le token en premier
-            if (!jwtUtil.validateToken(token)) {
-                System.out.println("JWT FILTER - Token non valide !");
-                return;
-            }
-
-            // Extraire l'email seulement si le token est valide
+        if (jwtUtil.validateToken(token)) {
             String email = jwtUtil.getEmailFromToken(token);
-            System.out.println("JWT FILTER - Email extrait du token: " + email);
-
+            
             if (email != null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-                // Créer l'authentification
+                // CORRECTION IMPORTANTE ICI :
+                // On passe le 'token' en 2ème argument (credentials) au lieu de null.
+                // Cela permet de le récupérer plus tard si besoin.
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails,
-                                null,
+                                token, 
                                 userDetails.getAuthorities()
                         );
+                
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                // Définir l'authentification dans le contexte de sécurité
                 SecurityContextHolder.getContext().setAuthentication(authToken);
+                logger.debug("Utilisateur authentifié : {}", email);
             }
-        } catch (JwtException e) {
-            System.out.println("JWT FILTER - Erreur JWT: " + e.getMessage());
-            logger.warn("Invalid JWT token: {}", e.getMessage());
-        } catch (Exception e) {
-            System.out.println("JWT FILTER - Erreur auth: " + e.getMessage());
-            logger.error("Error during authentication: {}", e.getMessage());
+        } else {
+            logger.warn("Token JWT invalide détecté");
         }
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         String path = request.getRequestURI();
-        // Exclure les endpoints publics (login, register, etc.)
+        // C'est très bien de faire ça ici pour la performance
         return path.startsWith("/questconnect/api/auth/login") ||
                 path.startsWith("/questconnect/api/auth/register") ||
                 path.startsWith("/questconnect/actuator/");
