@@ -25,7 +25,7 @@ public class PersonnageController {
     }
 
     // --- Créer un nouveau personnage ---
-    @PostMapping("/create")
+    @PostMapping
     public String createPersonnage(@RequestBody Object personnageData, @AuthenticationPrincipal UserDetails user) {
         log.info("Création d'une nouvelle personnage - Données : {}", personnageData);
         String username = user.getUsername();

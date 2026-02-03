@@ -29,7 +29,7 @@ public class PersonnageAdapter implements IPersonnageAdapter {
     // --- Créer une nouvelle personnage ---
     @Override
     public String createPersonnage(Object personnageData) {
-        String url = baseUrl + "/create";
+        String url = baseUrl;
         log.info("Adapter createPersonnage - Envoi de la requête POST vers {} - Données : {}", url, personnageData);
         HttpEntity<Object> requestEntity = new HttpEntity<>(personnageData);
         String response = restTemplate.postForObject(url, requestEntity, String.class);
