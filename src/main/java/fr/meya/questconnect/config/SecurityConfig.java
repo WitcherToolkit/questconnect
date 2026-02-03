@@ -42,36 +42,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            // 1. GESTION DU CORS (Cross-Origin Resource Sharing)
-            // On dit à Spring d'utiliser notre méthode 'corsConfigurationSource' définie plus bas.
-            // Cela permet à ton Frontend Angular (sur le port 4200) de parler à ce Backend (sur un autre port).
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-
-            // 2. DESACTIVATION CSRF
-            // Le CSRF est une protection pour les sessions basées sur les cookies.
-            // Comme on utilise des Tokens (JWT), on n'en a pas besoin, on le désactive pour faciliter les tests.
             .csrf(csrf -> csrf.disable())
-
-            // 3. GESTION DE SESSION : STATELESS
-            // Très important pour une API REST avec JWT.
-            // On dit au serveur : "Ne garde aucune info en mémoire après la requête".
-            // Chaque requête doit prouver son identité à nouveau (via le token).
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
-            // 4. AUTORISATIONS DES URLS (Le plan du bâtiment)
             .authorizeHttpRequests(auth -> auth
-                    // Les routes "/login" et "/register" sont publiques (tout le monde peut essayer de se connecter).
-                    // ATTENTION : Si ton app a un préfixe (ex: /questconnect), ajoute-le ici !
                     .requestMatchers("/api/auth/login", "/api/auth/register").permitAll()
-                    
-                    // Toutes les autres requêtes nécessitent d'être connecté (avoir un token valide).
                     .anyRequest().authenticated()
             )
-
-            // 5. INSERTION DE NOTRE FILTRE
-            // On demande à Spring d'exécuter TON filtre (JwtAuthenticationFilter)
-            // AVANT le filtre standard de gestion des mots de passe.
-            // Si ton filtre valide le token, l'utilisateur est connecté avant même d'arriver au filtre standard.
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -113,7 +90,7 @@ public class SecurityConfig {
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService) // Utilise la logique pour trouver l'user
-            .passwordEncoder(passwordEncoder);      // Utilise cet encodeur pour vérifier le mot de passe
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder);
     }
 }
