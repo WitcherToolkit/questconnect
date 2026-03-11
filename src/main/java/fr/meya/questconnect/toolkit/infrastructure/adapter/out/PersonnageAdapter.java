@@ -11,28 +11,34 @@ import org.springframework.web.client.RestClient;
 @RequiredArgsConstructor
 public class PersonnageAdapter implements IPersonnageAdapter {
 
-    private final RestClient wtbClient;
+    private final RestClient restClient;
 
     @Override
     public String getPersonnageById(String id) {
-        // et ajoute l'URI ci-dessous (/personnages/{id})
-        log.info("Adapter - Récupération ID : {}", id);
-        
-        return wtbClient.get()
-                .uri("/personnages/{id}", id) 
+
+        log.info("Adapter getPersonnageById - ID : {}", id);
+
+        String response = restClient.get()
+                .uri("/personnages/{id}", id)
                 .retrieve()
                 .body(String.class);
+
+        log.info("Adapter getPersonnageById - Réponse reçue : {}", response);
+        return response;
     }
 
     @Override
     public String createPersonnage(Object personnageData) {
-        // et ajoute l'URI ci-dessous (/personnages)
-        log.info("Adapter - Création : {}", personnageData);
 
-        return wtbClient.post()
-                .uri("/personnages") 
+        log.info("Adapter createPersonnage - Données : {}", personnageData);
+
+        String response = restClient.post()
+                .uri("/personnages")
                 .body(personnageData)
                 .retrieve()
                 .body(String.class);
+
+        log.info("Adapter createPersonnage - Réponse reçue : {}", response);
+        return response;
     }
 }

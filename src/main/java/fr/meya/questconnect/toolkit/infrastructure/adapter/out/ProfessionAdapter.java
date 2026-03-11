@@ -1,60 +1,76 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.out;
 
 import fr.meya.questconnect.toolkit.port.out.IProfessionAdapter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class ProfessionAdapter implements IProfessionAdapter {
-    @Value("${toolkit.api.base.url}/professions")
-    private String baseUrl;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestClient restClient;
 
     // --- Récupérer la liste des professions ---
     @Override
     public String getProfessionList() {
-        String url = baseUrl + "/list";
-        log.info("Adapter - Envoi de la requête GET vers {}", url);
-        String response = restTemplate.getForObject(url, String.class);
-        log.info("Adapter getList - Réponse reçue : {}", response);
+
+        log.info("Adapter getProfessionList - Envoi de la requête GET");
+
+        String response = restClient.get()
+                .uri("/professions/list")
+                .retrieve()
+                .body(String.class);
+
+        log.info("Adapter getProfessionList - Réponse reçue : {}", response);
         return response;
     }
 
     // --- Récupérer une profession avec des compétences ---
     @Override
     public String getProfessionCompetences(String id) {
-        String url = baseUrl + "/detail/" + id;
-        log.info("Adapter - Envoi de la requête GET getProfessionCompetence vers {}", url);
-        String response = restTemplate.getForObject(url, String.class);
-        log.info("Adapter getProfessionCompetence - Réponse reçue : {}", response);
+
+        log.info("Adapter getProfessionCompetences - ID : {}", id);
+
+        String response = restClient.get()
+                .uri("/professions/detail/{id}", id)
+                .retrieve()
+                .body(String.class);
+
+        log.info("Adapter getProfessionCompetences - Réponse reçue : {}", response);
         return response;
     }
 
     // --- Créer une nouvelle profession ---
     @Override
     public String createProfession(Object professionData) {
-        String url = baseUrl + "/create";
-        log.info("Adapter createProfession - Envoi de la requête POST vers {} - Données : {}", url, professionData);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(professionData);
-        String response = restTemplate.postForObject(url, requestEntity, String.class);
+
+        log.info("Adapter createProfession - Données : {}", professionData);
+
+        String response = restClient.post()
+                .uri("/professions/create")
+                .body(professionData)
+                .retrieve()
+                .body(String.class);
+
         log.info("Adapter createProfession - Réponse reçue : {}", response);
         return response;
     }
 
     // --- Mettre à jour une profession ---
     @Override
-    public String updateProfession (String id, Object professionData) {
-        String url = baseUrl + "/update/" + id;
-        log.info("Adapter - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, professionData);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(professionData);
-        String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
+    public String updateProfession(String id, Object professionData) {
+
+        log.info("Adapter updateProfession - ID : {} - Données : {}", id, professionData);
+
+        String response = restClient.put()
+                .uri("/professions/update/{id}", id)
+                .body(professionData)
+                .retrieve()
+                .body(String.class);
+
         log.info("Adapter updateProfession - Réponse reçue : {}", response);
         return response;
     }
@@ -62,10 +78,15 @@ public class ProfessionAdapter implements IProfessionAdapter {
     // --- Supprimer une profession ---
     @Override
     public String deleteProfession(String id) {
-        String url = baseUrl + "/delete/" + id;
-        log.info("Adapter deleteProfession - Envoi de la requête DELETE vers {} - ID : {}", url, id);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
-        log.info("Adapter deleteProfession - Réponse reçue : {}", response.getBody());
-        return response.getBody();
+
+        log.info("Adapter deleteProfession - ID : {}", id);
+
+        String response = restClient.delete()
+                .uri("/professions/delete/{id}", id)
+                .retrieve()
+                .body(String.class);
+
+        log.info("Adapter deleteProfession - Réponse reçue : {}", response);
+        return response;
     }
 }

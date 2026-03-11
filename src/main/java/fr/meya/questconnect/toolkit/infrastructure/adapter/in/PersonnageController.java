@@ -3,6 +3,7 @@ package fr.meya.questconnect.toolkit.infrastructure.adapter.in;
 import fr.meya.questconnect.toolkit.domaine.port.in.IPersonnageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,15 @@ public class PersonnageController {
     @Autowired
     private IPersonnageService personnageService;
 
+    /**
+     * Méthode de débug
+     * @param authentication
+     * @return
+     */
+    @GetMapping("/me")
+    public Authentication me(Authentication authentication) {
+        return authentication;
+    }
     // --- Consulter un persoonage ---
     @GetMapping("/{id}")
     public String getPersonnageById(@PathVariable String id) {

@@ -35,6 +35,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+                logger.info("Request URI: {}", request.getRequestURI());
+
 
         try {
             String token = extractTokenFromRequest(request);
@@ -64,7 +66,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (email != null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-                // CORRECTION IMPORTANTE ICI :
                 // On passe le 'token' en 2ème argument (credentials) au lieu de null.
                 // Cela permet de le récupérer plus tard si besoin.
                 UsernamePasswordAuthenticationToken authToken =
@@ -88,8 +89,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         String path = request.getRequestURI();
         // C'est très bien de faire ça ici pour la performance
-        return path.startsWith("/questconnect/api/auth/login") ||
-                path.startsWith("/questconnect/api/auth/register") ||
-                path.startsWith("/questconnect/actuator/");
+        return path.startsWith("/api/auth/login") ||
+               path.startsWith("/api/auth/register") ||
+               path.startsWith("/actuator/");
     }
 }

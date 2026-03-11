@@ -1,28 +1,29 @@
 package fr.meya.questconnect.toolkit.infrastructure.adapter.out;
 
 import fr.meya.questconnect.toolkit.port.out.IMagieAdapter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 @Slf4j
 @Component
-public class MagieAdapter  implements IMagieAdapter {
-    @Value("${toolkit.api.base.url}/magies")
-    private String baseUrl;
+@RequiredArgsConstructor
+public class MagieAdapter implements IMagieAdapter {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestClient restClient;
 
     // --- Récupérer la liste des magies ---
     @Override
     public String getMagieList(String niveau) {
-        String url = baseUrl + "/list";
-        log.info("Adapter getMagieList - Envoi de la requête GET vers {}", url);
-        String response = restTemplate.getForObject(url, String.class);
+
+        log.info("Adapter getMagieList - Envoi de la requête GET");
+
+        String response = restClient.get()
+                .uri("/magies/list")
+                .retrieve()
+                .body(String.class);
+
         log.info("Adapter getMagieList - Réponse reçue : {}", response);
         return response;
     }
@@ -30,10 +31,15 @@ public class MagieAdapter  implements IMagieAdapter {
     // --- Créer une nouvelle magie ---
     @Override
     public String createMagie(Object magieData) {
-        String url = baseUrl + "/create";
-        log.info("Adapter createMagie - Envoi de la requête POST vers {} - Données : {}", url, magieData);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(magieData);
-        String response = restTemplate.postForObject(url, requestEntity, String.class);
+
+        log.info("Adapter createMagie - Données : {}", magieData);
+
+        String response = restClient.post()
+                .uri("/magies/create")
+                .body(magieData)
+                .retrieve()
+                .body(String.class);
+
         log.info("Adapter createMagie - Réponse reçue : {}", response);
         return response;
     }
@@ -41,10 +47,15 @@ public class MagieAdapter  implements IMagieAdapter {
     // --- Mettre à jour une magie existante ---
     @Override
     public String updateMagie(String id, Object magieData) {
-        String url = baseUrl + "/update/" + id;
-        log.info("Adapter updateMagie - Envoi de la requête PUT vers {} - ID : {} - Données : {}", url, id, magieData);
-        HttpEntity<Object> requestEntity = new HttpEntity<>(magieData);
-        String response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class).getBody();
+
+        log.info("Adapter updateMagie - ID : {} - Données : {}", id, magieData);
+
+        String response = restClient.put()
+                .uri("/magies/update/{id}", id)
+                .body(magieData)
+                .retrieve()
+                .body(String.class);
+
         log.info("Adapter updateMagie - Réponse reçue : {}", response);
         return response;
     }
@@ -52,10 +63,15 @@ public class MagieAdapter  implements IMagieAdapter {
     // --- Supprimer une magie ---
     @Override
     public String deleteMagie(String id) {
-        String url = baseUrl + "/delete/" + id;
-        log.info("Adapter deleteMagie - Envoi de la requête DELETE vers {} - ID : {}", url, id);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
-        log.info("Adapter deleteMagie - Réponse reçue : {}", response.getBody());
-        return response.getBody();
+
+        log.info("Adapter deleteMagie - ID : {}", id);
+
+        String response = restClient.delete()
+                .uri("/magies/delete/{id}", id)
+                .retrieve()
+                .body(String.class);
+
+        log.info("Adapter deleteMagie - Réponse reçue : {}", response);
+        return response;
     }
 }
